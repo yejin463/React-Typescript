@@ -1,0 +1,52 @@
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  font-family: 나눔스퀘어;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Header {
+  flex: 30%;
+  background-color: blue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header .InputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header input {
+  width: 200px;
+  height: 40px;
+  outline: none;
+  border-radius: 8px 8px;
+  padding-left: 10px;
+  font-size: 17px;
+  border: 1px solid gray;
+}
+
+.Header button {
+  width: 100px;
+  height: 87px;
+  outline: none;
+  border-radius: 8px 8px;
+  padding-left: 10px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.todolist {
+  flex: 70%;
+  width: 100%;
+}
