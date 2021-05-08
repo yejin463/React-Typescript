@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC, useState } from "react";
 import './App.css';
+import TodoTask from "./Components/TodoTask";
 import {ITask} from './interface'
 
 const App: FC = () => {
@@ -9,12 +10,9 @@ const App: FC = () => {
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
   const hadleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log(event.target.name);
     if (event.target.name === "taskName"){
-      console.log(event.target.value)
       setTask(event.target.value);
     } else {
-      console.log(event.target.value);
       setDeadline(Number(event.target.value));
     }
   };
@@ -22,19 +20,34 @@ const App: FC = () => {
   const addTask = (): void => {
     const newTask = { taskName: task, deadline: deadline };
     setTodoList([...todoList, newTask]);
-    console.log(todoList);
+    setTask("");
+    setDeadline(0);
   };
 
   return (
     <div className="App">
       <div className="Header">
         <div className="InputContainer">
-          <input type="text" placeholder="" onChange={hadleChange } name="taskName"></input>
-          <input type="number" placeholder="DeadLine" onChange={hadleChange}></input>
+          <input 
+            type="text" 
+            placeholder="Task..." 
+            value={task}
+            onChange={hadleChange} 
+            name="taskName"/>
+          <input 
+            type="number" 
+            placeholder="DeadLine" 
+            value={deadline}
+            onChange={hadleChange}
+            />
         </div>
         <button onClick={addTask}>추가하기</button>
       </div>
-      <div className="todolist"></div>
+      <div className="todolist">
+        {todoList.map((task: ITask, key: number) => {
+          return <TodoTask key={key} task={task}/>;
+        })}
+      </div>
     </div>
   );
 };
